@@ -1,0 +1,36 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="RADON tests" verbose="2">
+    <test name="Home Page" enabled="true">
+        <classes>
+            <class name="pl.gov.nauka.radon.test.HomePageTest"/>
+        </classes>
+    </test>
+    <test name="Sign in" enabled="true">
+        <classes>
+            <class name="pl.gov.nauka.radon.test.SignInPageTest"/>
+        </classes>
+    </test>
+    <test name="Register Page" enabled="true">
+        <classes>
+            <class name="pl.gov.nauka.radon.test.RegisterPageTest"/>
+        </classes>
+    </test>
+    <test name="Search Page" enabled="true">
+        <parameter name="searchPhrase" value="Collegium Da Vinci"/>
+        <classes>
+            <class name="pl.gov.nauka.radon.test.SearchPageTest"/>
+        </classes>
+    </test>
+    <test name="Hyperlinks check" enabled="true">
+        <classes>
+            <class name="pl.gov.nauka.radon.test.HyperlinksPageTest"/>
+        </classes>
+    </test>
+    <test name="Filters check" enabled="true">
+        <parameter name="firstName" value="Marcin"/>
+        <classes>
+            <class name="pl.gov.nauka.radon.test.FiltersPageTest"/>
+        </classes>
+    </test>
+
+</suite>

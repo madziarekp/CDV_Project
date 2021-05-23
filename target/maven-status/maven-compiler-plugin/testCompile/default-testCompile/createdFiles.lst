@@ -1,0 +1,14 @@
+pl\gov\nauka\radon\pages\FiltersPage.class
+pl\gov\nauka\radon\setup\BaseTest.class
+pl\gov\nauka\radon\pages\SignInPage.class
+pl\gov\nauka\radon\setup\CSVReaderFile.class
+pl\gov\nauka\radon\test\HomePageTest.class
+pl\gov\nauka\radon\test\SignInPageTest.class
+pl\gov\nauka\radon\test\HyperlinksPageTest.class
+pl\gov\nauka\radon\test\SearchPageTest.class
+pl\gov\nauka\radon\pages\HomePage.class
+pl\gov\nauka\radon\pages\RegisterPage.class
+pl\gov\nauka\radon\test\FiltersPageTest.class
+pl\gov\nauka\radon\pages\HyperlinksPage.class
+pl\gov\nauka\radon\pages\SearchPage.class
+pl\gov\nauka\radon\test\RegisterPageTest.class
