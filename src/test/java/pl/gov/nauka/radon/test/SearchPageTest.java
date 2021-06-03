@@ -1,5 +1,6 @@
 package pl.gov.nauka.radon.test;
 
+import org.testng.Assert;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pl.gov.nauka.radon.pages.SearchPage;
@@ -17,7 +18,8 @@ public class SearchPageTest extends BaseTest {
         searchPageObjects.enterSearchedPhrase(searchPhrase);
         searchPageObjects.clickSearchButton();
         searchPageObjects.verifySearchResultsHeader();
-        searchPageObjects.verifySearchResults();
+        Assert.assertEquals(searchPageObjects.getReportsResults(), "https://radon.nauka.gov.pl/wyszukiwanie?searchType=raporty&pageNumber=1&q=Collegium%20Da%20Vinci");
+        Assert.assertEquals(searchPageObjects.getAnalysisResults(), "https://radon.nauka.gov.pl/wyszukiwanie?searchType=analizy&pageNumber=1&q=Collegium%20Da%20Vinci");
     }
 
 

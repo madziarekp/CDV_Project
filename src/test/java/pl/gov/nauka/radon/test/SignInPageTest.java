@@ -1,6 +1,7 @@
 package pl.gov.nauka.radon.test;
 
 import com.opencsv.exceptions.CsvValidationException;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import pl.gov.nauka.radon.pages.HomePage;
 import pl.gov.nauka.radon.pages.SignInPage;
@@ -8,30 +9,43 @@ import pl.gov.nauka.radon.setup.BaseTest;
 import pl.gov.nauka.radon.setup.CSVReaderFile;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 public class SignInPageTest extends BaseTest {
 
-    SignInPage signInPageObjects;
+    //SignInPage signInPageObjects;
     CSVReaderFile csvFileObjects;
     HomePage homePageObjects;
+
+    String incorrectLoginData = "Nieprawidłowa nazwa użytkownika lub hasło.";
 
     @Test()
     public void check_sign_in_page() throws CsvValidationException, IOException {
 
         //initialize PageObject of sign in page
-        signInPageObjects = new SignInPage(driver);
+        SignInPage signInPageObjects;
         //initialize PageObject of home page
         homePageObjects = new HomePage(driver);
 
-        homePageObjects.clickSignIn();
-        csvFileObjects = new CSVReaderFile();
-        String[] t1 = csvFileObjects.csvReadData().get(0);
-        String[] t2 = csvFileObjects.csvReadData().get(1);
+        signInPageObjects = homePageObjects.clickSignIn();
 
-        signInPageObjects.enterEmail(t1[0]);
-        signInPageObjects.enterPassword(t2[1]);
-        signInPageObjects.clickSignInButton();
-        signInPageObjects.checkErrorMessage();
+        //initialize PageObject of CSV Reader File
+        csvFileObjects = new CSVReaderFile();
+
+        //define variables
+        String[] t1 = new String[0];
+
+        //read all data from csv file
+        for(int i=0; i<csvFileObjects.csvReadData().size();i++)
+        {
+            t1 = csvFileObjects.csvReadData().get(i);
+            signInPageObjects.enterEmail(t1[0]);
+            signInPageObjects.enterPassword(t1[0]);
+            signInPageObjects.clickSignInButton();
+            Assert.assertEquals(signInPageObjects.getErrorMessage(),incorrectLoginData);
+            signInPageObjects.removeEmailValue();
+            signInPageObjects.removePasswordValue();
+        }
 
     }
 }

@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import com.opencsv.CSVReader;
 import org.testng.annotations.Test;
@@ -13,8 +14,8 @@ import org.testng.annotations.Test;
 public class CSVReaderFile {
     WebDriver driver;
 
+    String CSV_PATH="./Mappe1.csv";
 
-    String CSV_PATH="C:\\Users\\pabiam\\IdeaProjects\\CDV_Project\\Mappe1.csv";
     @Test
     public List<String[]> csvReadData() throws IOException, CsvValidationException {
 

@@ -5,13 +5,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 public class HomePage {
 
         WebDriver driver;
-        final String searchInputText = "Wyszukaj w systemie";
-        final String headerText = "Strona główna - RAD-on: RAPORTY, ANALIZY, DANE";
+
 
         //WebElements
         @FindBy(tagName = "title")
@@ -29,31 +29,46 @@ public class HomePage {
         @FindBy(xpath = "//button[contains(@aria-label, 'Wyłącz tryb wysokiego kontrastu')]")
         WebElement contrastButtonEnabled;
 
+        @FindBy(xpath = "//button[contains(text(),'systemie')]")
+        WebElement aboutSystem;
+
         //Constructor - called as soon as the object of the class is created
         public HomePage(WebDriver driver) {
                 this.driver = driver;
                 PageFactory.initElements(driver,this);
         }
         // click sing in link to go to the Sign in Page
-        public void clickSignIn()
+        public SignInPage clickSignIn()
         {
                 SignIn.click();
+                return new SignInPage(driver);
+        }
+        // click about link to go to the hyperlinks page
+        public HyperlinksPage clickAboutPage ()
+        {
+                WebDriverWait wait = new WebDriverWait(driver, 10);
+                wait.until(ExpectedConditions.visibilityOf(aboutSystem));
+                aboutSystem.click();
+                return new HyperlinksPage(driver);
         }
 
         //verify header of the website
-        public void verifyHeader() {
+        public String getHeader() {
                 String getHeaderText = Header.getAttribute("innerHTML");
-                Assert.assertEquals(headerText, getHeaderText);
+                return getHeaderText;
         }
         //verify search placeholder
-        public void verifySearch() {
+        public String getSearchPlaceholder() {
                 ExpectedConditions.visibilityOf(searchInput);
-                Assert.assertEquals(searchInput.getAttribute("placeholder"),searchInputText);
+                String searchPlaceholderText = searchInput.getAttribute("placeholder");
+                return searchPlaceholderText;
         }
         //verify contrast button if disabled
-        public void verifyContrastButtonDisabled()
+        public String  verifyContrastButtonDisabled()
         {
-                Assert.assertEquals(contrastButtonDisabled.getAttribute("aria-label"), "Włącz tryb wysokiego kontrastu");
+               String attributeContrastButton = contrastButtonDisabled.getAttribute("aria-label");
+               return attributeContrastButton;
+
         }
         //verify contrast button if enabled
         public void verifyContrastButtonEnabled()

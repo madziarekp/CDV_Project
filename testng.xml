@@ -1,5 +1,6 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="RADON tests" verbose="2">
+
     <test name="Home Page" enabled="true">
         <classes>
             <class name="pl.gov.nauka.radon.test.HomePageTest"/>
@@ -32,5 +33,6 @@
             <class name="pl.gov.nauka.radon.test.FiltersPageTest"/>
         </classes>
     </test>
+
 
 </suite>

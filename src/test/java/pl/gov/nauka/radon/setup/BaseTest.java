@@ -13,7 +13,7 @@ public class BaseTest {
         @BeforeClass(alwaysRun = true)
         public void setup(){
             //Configure system properties of chrome driver
-            System.setProperty("webdriver.chrome.driver","C:\\Users\\pabiam\\IdeaProjects\\CDV_Project\\chromedriver.exe");
+            System.setProperty("webdriver.chrome.driver","./chromedriver.exe");
             //Create a Chrome driver. It is used by all test classes
             driver = new ChromeDriver();
             // set 20 seconds for page to be loaded

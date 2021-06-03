@@ -1,6 +1,7 @@
 package pl.gov.nauka.radon.test;
 
 import com.opencsv.exceptions.CsvValidationException;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import pl.gov.nauka.radon.pages.HomePage;
 import pl.gov.nauka.radon.pages.RegisterPage;
@@ -14,6 +15,8 @@ public class RegisterPageTest extends BaseTest {
     HomePage homePageObjects;
     RegisterPage registerPageObjects;
 
+    String missingName = "Proszę podać imię.";
+
     @Test(priority = 1)
     public void check_register_page() throws CsvValidationException, IOException {
         signInPageObjects = new SignInPage(driver);
@@ -25,8 +28,16 @@ public class RegisterPageTest extends BaseTest {
         registerPageObjects.insertIncorrectValues();
         registerPageObjects.clickRecaptcha();
         registerPageObjects.clickRegisterButton();
-        registerPageObjects.verifyErrorsMissingValues();
+        Assert.assertTrue(registerPageObjects.isMissingNameErrorMessageVisible());
+
     }
+/*
+    @Test(priority = 2)
+    public void checkErrors()
+    {
+        Assert.assertEquals(registerPageObjects.verifyErrorsMissingValues(), missingName );
+    }
+*/
 
 }
 

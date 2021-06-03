@@ -65,7 +65,6 @@ public class RegisterPage {
     String missingName = "Proszę podać imię.";
     String incorrectSurname = "nazwisko.";
     String incorrectEmail = "email@com.";
-    String missingUserName = "Proszę podać nazwę użytkownika.";
     String incorrectPassword = "pass";
     String repeatPassword = "RepeatedPassword2";
 
@@ -82,9 +81,10 @@ public class RegisterPage {
         registerButton.click();
     }
     //verify error messages related to the missing values on the page
-    public void verifyErrorsMissingValues()  {
-       String getErrorMessageText = errorMissingName.getAttribute("innerHTML");
-       Assert.assertEquals(getErrorMessageText, missingName);
+    public boolean isMissingNameErrorMessageVisible()
+    {
+        String getErrorMessageText = errorMissingName.getAttribute("innerHTML");
+        return getErrorMessageText.equals(missingName);
     }
 
     //insert incorrect values to the specific fields

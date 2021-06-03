@@ -38,10 +38,20 @@ public class SignInPage {
         signInButton.click();
     }
     //verify error message after entering incorrect login and password
-    public void checkErrorMessage() {
+    public String getErrorMessage() {
         String getErrorMessageText = errorMessage.getAttribute("innerHTML");
-        Assert.assertEquals(getErrorMessageText,"Nieprawidłowa nazwa użytkownika lub hasło.");
+        return getErrorMessageText;
     }
+    public void removeEmailValue()
+    {
+        input_email.clear();
+    }
+
+    public void removePasswordValue()
+    {
+        input_password.clear();
+    }
+
     //enter email from csv file
     public void enterEmail(String email)
     {
@@ -52,6 +62,7 @@ public class SignInPage {
     {
         input_password.sendKeys(passwords);
     }
+
     //click link Zarejestruj sie
     public void go_to_register_page()
     {

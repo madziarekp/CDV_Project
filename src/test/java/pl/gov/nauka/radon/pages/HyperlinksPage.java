@@ -30,21 +30,27 @@ public class HyperlinksPage {
         PageFactory.initElements(driver,this);
     }
     //check if clicked link is properly open in the new tab
-    public void openHyperlinks()
+    public String checkFirstHyperlink()
     {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.visibilityOf(aboutSystem));
-        aboutSystem.click();
         polonLink.click();
         ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
         driver.switchTo().window(tabs.get(1));
-        Assert.assertEquals(driver.getCurrentUrl(), "https://polon2.opi.org.pl/siec-polon");
+        String firstCurrentURL = driver.getCurrentUrl();
         driver.close();
+        return firstCurrentURL;
+
+    }
+
+    public String checkSecondHyperlink()
+    {
+
+        ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
         driver.switchTo().window(tabs.get(0));
         inventorumLink.click();
         ArrayList<String> tabs2 = new ArrayList<>(driver.getWindowHandles());
         driver.switchTo().window(tabs2.get(1));
-        Assert.assertEquals(driver.getCurrentUrl(), "https://inventorum.opi.org.pl/");
+        String secondCurrentURL = driver.getCurrentUrl();
         driver.close();
+        return secondCurrentURL;
     }
 }
