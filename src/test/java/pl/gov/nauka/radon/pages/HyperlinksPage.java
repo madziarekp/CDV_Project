@@ -27,11 +27,11 @@ public class HyperlinksPage {
     //Constructor - called as soon as the object of the class is created
     public HyperlinksPage(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
     }
+
     //check if clicked link is properly open in the new tab
-    public String checkFirstHyperlink()
-    {
+    public String checkFirstHyperlink() {
         polonLink.click();
         ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
         driver.switchTo().window(tabs.get(1));
@@ -41,8 +41,7 @@ public class HyperlinksPage {
 
     }
 
-    public String checkSecondHyperlink()
-    {
+    public String checkSecondHyperlink() {
 
         ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
         driver.switchTo().window(tabs.get(0));

@@ -1,65 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite guice-stage="DEVELOPMENT" verbose="0" name="Failed suite [RADON tests]">
-  <test name="Register Page(failed)">
+  <test name="Home Page(failed)">
     <classes>
-      <class name="pl.gov.nauka.radon.test.SignInPageTest">
+      <class name="pl.gov.nauka.radon.test.HomePageTest">
         <methods>
+          <include name="verifySearchPlaceholder"/>
           <include name="setup"/>
+          <include name="tear_down"/>
         </methods>
-      </class> <!-- pl.gov.nauka.radon.test.SignInPageTest -->
+      </class> <!-- pl.gov.nauka.radon.test.HomePageTest -->
       <class name="pl.gov.nauka.radon.test.SearchPageTest">
         <methods>
           <include name="setup"/>
+          <include name="tear_down"/>
         </methods>
       </class> <!-- pl.gov.nauka.radon.test.SearchPageTest -->
+      <class name="pl.gov.nauka.radon.test.SignInPageTest">
+        <methods>
+          <include name="setup"/>
+          <include name="tear_down"/>
+        </methods>
+      </class> <!-- pl.gov.nauka.radon.test.SignInPageTest -->
+      <class name="pl.gov.nauka.radon.test.HyperlinksPageTest">
+        <methods>
+          <include name="setup"/>
+          <include name="tear_down"/>
+        </methods>
+      </class> <!-- pl.gov.nauka.radon.test.HyperlinksPageTest -->
       <class name="pl.gov.nauka.radon.test.FiltersPageTest">
         <methods>
           <include name="setup"/>
+          <include name="tear_down"/>
+        </methods>
+      </class> <!-- pl.gov.nauka.radon.test.FiltersPageTest -->
+      <class name="pl.gov.nauka.radon.test.RegisterPageTest">
+        <methods>
+          <include name="setup"/>
+          <include name="tear_down"/>
+        </methods>
+      </class> <!-- pl.gov.nauka.radon.test.RegisterPageTest -->
+    </classes>
+  </test> <!-- Home Page(failed) -->
+  <test name="Register Page(failed)">
+    <classes>
+      <class name="pl.gov.nauka.radon.test.HomePageTest">
+        <methods>
+          <include name="setup"/>
+          <include name="tear_down"/>
+        </methods>
+      </class> <!-- pl.gov.nauka.radon.test.HomePageTest -->
+      <class name="pl.gov.nauka.radon.test.SearchPageTest">
+        <methods>
+          <include name="setup"/>
+          <include name="tear_down"/>
+        </methods>
+      </class> <!-- pl.gov.nauka.radon.test.SearchPageTest -->
+      <class name="pl.gov.nauka.radon.test.SignInPageTest">
+        <methods>
+          <include name="setup"/>
+          <include name="tear_down"/>
+        </methods>
+      </class> <!-- pl.gov.nauka.radon.test.SignInPageTest -->
+      <class name="pl.gov.nauka.radon.test.HyperlinksPageTest">
+        <methods>
+          <include name="setup"/>
+          <include name="tear_down"/>
+        </methods>
+      </class> <!-- pl.gov.nauka.radon.test.HyperlinksPageTest -->
+      <class name="pl.gov.nauka.radon.test.FiltersPageTest">
+        <methods>
+          <include name="setup"/>
+          <include name="tear_down"/>
         </methods>
       </class> <!-- pl.gov.nauka.radon.test.FiltersPageTest -->
       <class name="pl.gov.nauka.radon.test.RegisterPageTest">
         <methods>
           <include name="check_register_page"/>
           <include name="setup"/>
+          <include name="tear_down"/>
         </methods>
       </class> <!-- pl.gov.nauka.radon.test.RegisterPageTest -->
-      <class name="pl.gov.nauka.radon.test.HyperlinksPageTest">
-        <methods>
-          <include name="setup"/>
-        </methods>
-      </class> <!-- pl.gov.nauka.radon.test.HyperlinksPageTest -->
     </classes>
   </test> <!-- Register Page(failed) -->
-  <test name="Filters check(failed)">
-    <parameter name="firstName" value="Marcin"/>
-    <classes>
-      <class name="pl.gov.nauka.radon.test.SignInPageTest">
-        <methods>
-          <include name="setup"/>
-        </methods>
-      </class> <!-- pl.gov.nauka.radon.test.SignInPageTest -->
-      <class name="pl.gov.nauka.radon.test.SearchPageTest">
-        <methods>
-          <include name="setup"/>
-        </methods>
-      </class> <!-- pl.gov.nauka.radon.test.SearchPageTest -->
-      <class name="pl.gov.nauka.radon.test.FiltersPageTest">
-        <methods>
-          <include name="searchAndCheckResults" invocation-numbers="0"/>
-          <include name="setup"/>
-        </methods>
-      </class> <!-- pl.gov.nauka.radon.test.FiltersPageTest -->
-      <class name="pl.gov.nauka.radon.test.RegisterPageTest">
-        <methods>
-          <include name="setup"/>
-        </methods>
-      </class> <!-- pl.gov.nauka.radon.test.RegisterPageTest -->
-      <class name="pl.gov.nauka.radon.test.HyperlinksPageTest">
-        <methods>
-          <include name="setup"/>
-        </methods>
-      </class> <!-- pl.gov.nauka.radon.test.HyperlinksPageTest -->
-    </classes>
-  </test> <!-- Filters check(failed) -->
 </suite> <!-- Failed suite [RADON tests] -->

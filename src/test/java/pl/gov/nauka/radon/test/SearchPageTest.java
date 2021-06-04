@@ -12,8 +12,7 @@ public class SearchPageTest extends BaseTest {
 
     @Test(priority = 1)
     @Parameters({"searchPhrase"})
-    public void check_search_results(String searchPhrase)
-    {
+    public void check_search_results(String searchPhrase) {
         searchPageObjects = new SearchPage(driver);
         searchPageObjects.enterSearchedPhrase(searchPhrase);
         searchPageObjects.clickSearchButton();

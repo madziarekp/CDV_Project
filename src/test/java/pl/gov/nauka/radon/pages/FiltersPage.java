@@ -12,11 +12,6 @@ public class FiltersPage {
     WebDriver driver;
 
     //WebElements
-    @FindBy(xpath = "//button[contains(text(),'Dane')]")
-    WebElement dataButton;
-
-    @FindBy(xpath = "//a[@href='/dane/nauczyciele-akademiccy-badacze-i-osoby-zaangazowane-w-dzialalnosc-naukowa']")
-    WebElement employeeLink;
 
     @FindBy(xpath = "//input[contains(@class, 'focus-1')]")
     WebElement inputName;
@@ -43,18 +38,6 @@ public class FiltersPage {
         PageFactory.initElements(driver, this);
     }
 
-    // click Data link to go to the data page
-    public void clickDataButton() {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.visibilityOf(dataButton));
-        dataButton.click();
-    }
-
-    // click Employee link to go to the search for Employees page
-    public void clickEmployeeLink() {
-        employeeLink.click();
-    }
-
     //enter searched Name using Parameter
     public void enterFirstName(String firstName) {
         WebDriverWait wait = new WebDriverWait(driver, 10);
@@ -71,8 +54,8 @@ public class FiltersPage {
     //refresh page - workaround, the website after searching still contains old values in the table from before searching
 
     public String getActualURL() {
-        String actualURL = driver.getCurrentUrl();
-        return actualURL;
+
+        return driver.getCurrentUrl();
     }
 
     public String getFirstSurnameResult() {
@@ -80,8 +63,7 @@ public class FiltersPage {
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.visibilityOf(firstRowName));
         sortAz.click();
-        String getFirstSurname = firstRowSurname.getText();
-        return getFirstSurname;
+        return firstRowSurname.getText();
 
     }
 
@@ -90,13 +72,11 @@ public class FiltersPage {
         driver.navigate().refresh();
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.visibilityOf(firstRowSurname));
-        String getLastSurname = firstRowSurname.getText();
-        return getLastSurname;
+        return firstRowSurname.getText();
     }
 
     public String getFirstName() {
-        String getFirstName = firstRowName.getText();
-        return getFirstName;
+        return firstRowName.getText();
     }
 
 

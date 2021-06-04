@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="6" failures="2" name="TestSuite" time="45.699" errors="0" skipped="0">
+<testsuite tests="9" failures="2" name="TestSuite" time="35.545" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\OpenJDK\jdk-8\java-se-8u41-ri\jre\bin"/>
@@ -65,24 +65,38 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
   </properties>
-  <testcase classname="pl.gov.nauka.radon.test.SignInPageTest" name="check_sign_in_page" time="12.176"/>
-  <testcase classname="pl.gov.nauka.radon.test.RegisterPageTest" name="check_register_page" time="13.094">
+  <testcase classname="pl.gov.nauka.radon.test.HomePageTest" name="verifyHeader" time="0.052"/>
+  <testcase classname="pl.gov.nauka.radon.test.HomePageTest" name="verifySearchPlaceholder" time="0.064">
+    <failure message="expected [Wyszukaj w systemie] but found [Wyszukj w systemie]" type="java.lang.AssertionError">java.lang.AssertionError: expected [Wyszukaj w systemie] but found [Wyszukj w systemie]
+	at org.testng.Assert.fail(Assert.java:94)
+	at org.testng.Assert.failNotEquals(Assert.java:513)
+	at org.testng.Assert.assertEqualsImpl(Assert.java:135)
+	at org.testng.Assert.assertEquals(Assert.java:116)
+	at org.testng.Assert.assertEquals(Assert.java:190)
+	at org.testng.Assert.assertEquals(Assert.java:200)
+	at pl.gov.nauka.radon.test.HomePageTest.verifySearchPlaceholder(HomePageTest.java:28)
+</failure>
+  </testcase>
+  <testcase classname="pl.gov.nauka.radon.test.HomePageTest" name="verifyContrastButtonDisabled" time="0.02"/>
+  <testcase classname="pl.gov.nauka.radon.test.HomePageTest" name="verifyContrastButtonEnabled" time="0.087"/>
+  <testcase classname="pl.gov.nauka.radon.test.SignInPageTest" name="check_sign_in_page" time="10.324"/>
+  <testcase classname="pl.gov.nauka.radon.test.RegisterPageTest" name="check_register_page" time="8.845">
     <failure message="no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//iframe[@title=&apos;Zadanie reCAPTCHA&apos;]&quot;}
   (Session info: chrome=90.0.4430.212)
 For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
 Build info: version: &apos;3.11.0&apos;, revision: &apos;e59cfb3&apos;, time: &apos;2018-03-11T20:26:55.152Z&apos;
-System info: host: &apos;MSGN15168&apos;, ip: &apos;10.103.48.230&apos;, os.name: &apos;Windows 8.1&apos;, os.arch: &apos;x86&apos;, os.version: &apos;6.3&apos;, java.version: &apos;1.8.0_41&apos;
+System info: host: &apos;MSGN15168&apos;, ip: &apos;10.103.53.137&apos;, os.name: &apos;Windows 8.1&apos;, os.arch: &apos;x86&apos;, os.version: &apos;6.3&apos;, java.version: &apos;1.8.0_41&apos;
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 90.0.4430.212, chrome: {chromedriverVersion: 89.0.4389.23 (61b08ee2c5002..., userDataDir: C:\Users\pabiam\AppData\Loc...}, goog:chromeOptions: {debuggerAddress: localhost:61518}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Session ID: dc9a3ae8e53c14cd2a6dd89960171a4d
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 90.0.4430.212, chrome: {chromedriverVersion: 89.0.4389.23 (61b08ee2c5002..., userDataDir: C:\Users\pabiam\AppData\Loc...}, goog:chromeOptions: {debuggerAddress: localhost:52645}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: ad6b0b4a8fbc1f41d81af307d4a3c1bc
 *** Element info: {Using=xpath, value=//iframe[@title=&apos;Zadanie reCAPTCHA&apos;]}" type="org.openqa.selenium.NoSuchElementException">org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//iframe[@title=&apos;Zadanie reCAPTCHA&apos;]&quot;}
   (Session info: chrome=90.0.4430.212)
 For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
 Build info: version: &apos;3.11.0&apos;, revision: &apos;e59cfb3&apos;, time: &apos;2018-03-11T20:26:55.152Z&apos;
-System info: host: &apos;MSGN15168&apos;, ip: &apos;10.103.48.230&apos;, os.name: &apos;Windows 8.1&apos;, os.arch: &apos;x86&apos;, os.version: &apos;6.3&apos;, java.version: &apos;1.8.0_41&apos;
+System info: host: &apos;MSGN15168&apos;, ip: &apos;10.103.53.137&apos;, os.name: &apos;Windows 8.1&apos;, os.arch: &apos;x86&apos;, os.version: &apos;6.3&apos;, java.version: &apos;1.8.0_41&apos;
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 90.0.4430.212, chrome: {chromedriverVersion: 89.0.4389.23 (61b08ee2c5002..., userDataDir: C:\Users\pabiam\AppData\Loc...}, goog:chromeOptions: {debuggerAddress: localhost:61518}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Session ID: dc9a3ae8e53c14cd2a6dd89960171a4d
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 90.0.4430.212, chrome: {chromedriverVersion: 89.0.4389.23 (61b08ee2c5002..., userDataDir: C:\Users\pabiam\AppData\Loc...}, goog:chromeOptions: {debuggerAddress: localhost:52645}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: ad6b0b4a8fbc1f41d81af307d4a3c1bc
 *** Element info: {Using=xpath, value=//iframe[@title=&apos;Zadanie reCAPTCHA&apos;]}
 	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
@@ -100,34 +114,20 @@ Session ID: dc9a3ae8e53c14cd2a6dd89960171a4d
 	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:311)
 	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)
 	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
-	at com.sun.proxy.$Proxy7.sendKeys(Unknown Source)
-	at pl.gov.nauka.radon.pages.RegisterPage.clickRecaptcha(RegisterPage.java:114)
-	at pl.gov.nauka.radon.test.RegisterPageTest.check_register_page(RegisterPageTest.java:29)
+	at com.sun.proxy.$Proxy8.sendKeys(Unknown Source)
+	at pl.gov.nauka.radon.pages.RegisterPage.clickRecaptcha(RegisterPage.java:112)
+	at pl.gov.nauka.radon.test.RegisterPageTest.check_register_page(RegisterPageTest.java:27)
 </failure>
-    <system-err>Starting ChromeDriver 89.0.4389.23 (61b08ee2c50024bab004e48d2b1b083cdbdac579-refs/branch-heads/4389@{#294}) on port 3292
+    <system-err>Starting ChromeDriver 89.0.4389.23 (61b08ee2c50024bab004e48d2b1b083cdbdac579-refs/branch-heads/4389@{#294}) on port 19031
 Only local connections are allowed.
 Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
 ChromeDriver was started successfully.
-[1622742176.569][WARNING]: This version of ChromeDriver has not been tested with Chrome version 90.
-Jun 03, 2021 7:42:56 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+[1622798566.437][WARNING]: This version of ChromeDriver has not been tested with Chrome version 90.
+Jun 04, 2021 11:22:46 AM org.openqa.selenium.remote.ProtocolHandshake createSession
 INFORMATION: Detected dialect: W3C
 </system-err>
   </testcase>
-  <testcase classname="pl.gov.nauka.radon.test.SearchPageTest" name="check_search_results" time="2.39"/>
-  <testcase classname="pl.gov.nauka.radon.test.HyperlinksPageTest" name="checkHyperlinks" time="13.363"/>
-  <testcase classname="pl.gov.nauka.radon.test.FiltersPageTest" name="goToEmployeePage" time="0.812"/>
-  <testcase classname="pl.gov.nauka.radon.test.FiltersPageTest" name="searchAndCheckResults" time="3.864">
-    <failure message="expected [Żywek] but found [Abramski]" type="java.lang.AssertionError">java.lang.AssertionError: expected [Żywek] but found [Abramski]
-	at org.testng.Assert.fail(Assert.java:94)
-	at org.testng.Assert.failNotEquals(Assert.java:513)
-	at org.testng.Assert.assertEqualsImpl(Assert.java:135)
-	at org.testng.Assert.assertEquals(Assert.java:116)
-	at org.testng.Assert.assertEquals(Assert.java:190)
-	at org.testng.Assert.assertEquals(Assert.java:200)
-	at pl.gov.nauka.radon.test.FiltersPageTest.searchAndCheckResults(FiltersPageTest.java:31)
-</failure>
-    <system-out>Abramski
-?ywek
-</system-out>
-  </testcase>
+  <testcase classname="pl.gov.nauka.radon.test.SearchPageTest" name="check_search_results" time="2.145"/>
+  <testcase classname="pl.gov.nauka.radon.test.HyperlinksPageTest" name="checkHyperlinks" time="10.506"/>
+  <testcase classname="pl.gov.nauka.radon.test.FiltersPageTest" name="searchAndCheckResults" time="3.502"/>
 </testsuite>

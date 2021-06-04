@@ -4,33 +4,26 @@ import org.testng.Assert;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pl.gov.nauka.radon.pages.FiltersPage;
+import pl.gov.nauka.radon.pages.HomePage;
 import pl.gov.nauka.radon.setup.BaseTest;
 
 public class FiltersPageTest extends BaseTest {
-
-    FiltersPage filtersTestObjects;
 
     //Variables
     String expectedName = "Marcin";
 
     @Test(priority = 1)
-    public void goToEmployeePage()
-    {
-        filtersTestObjects = new FiltersPage(driver);
-        filtersTestObjects.clickDataButton();
-        filtersTestObjects.clickEmployeeLink();
-    }
-
-    @Test(priority = 2)
     @Parameters({"firstName"})
-    public void searchAndCheckResults(String firstName)
-    {
-        filtersTestObjects.enterFirstName(firstName);
-        filtersTestObjects.clickSearch();
+    public void searchAndCheckResults(String firstName) {
+        HomePage homePageObjects = new HomePage(driver);
+        FiltersPage filtersPage = homePageObjects.clickDataPage();
+        FiltersPage filtersPageEmployee = homePageObjects.clickEmployeeLink();
+        filtersPage.enterFirstName(firstName);
+        filtersPage.clickSearch();
+        Assert.assertNotEquals(filtersPage.getFirstSurnameResult(), filtersPage.getLastSurnameResult());
+        Assert.assertTrue(filtersPage.getActualURL().contains("firstName=Marcin&pageNumber=1"));
+        Assert.assertEquals(filtersPage.getFirstName(), expectedName);
 
-        Assert.assertNotEquals(filtersTestObjects.getFirstSurnameResult(), filtersTestObjects.getLastSurnameResult());
-        Assert.assertTrue(filtersTestObjects.getActualURL().contains("firstName=Marcin&pageNumber=1"));
-        Assert.assertEquals(filtersTestObjects.getFirstName(), expectedName);
 
     }
 

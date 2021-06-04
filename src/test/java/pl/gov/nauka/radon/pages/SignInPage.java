@@ -30,42 +30,40 @@ public class SignInPage {
     //Constructor - called as soon as the object of the class is created
     public SignInPage(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
     }
+
     //Method to click Zaloguj sie button
     public void clickSignInButton() {
         ExpectedConditions.elementToBeClickable(signInButton);
         signInButton.click();
     }
+
     //verify error message after entering incorrect login and password
     public String getErrorMessage() {
-        String getErrorMessageText = errorMessage.getAttribute("innerHTML");
-        return getErrorMessageText;
+        return errorMessage.getAttribute("innerHTML");
     }
-    public void removeEmailValue()
-    {
+
+    public void removeEmailValue() {
         input_email.clear();
     }
 
-    public void removePasswordValue()
-    {
+    public void removePasswordValue() {
         input_password.clear();
     }
 
     //enter email from csv file
-    public void enterEmail(String email)
-    {
+    public void enterEmail(String email) {
         input_email.sendKeys(email);
     }
+
     //enter password from csv file
-    public void enterPassword(String passwords)
-    {
+    public void enterPassword(String passwords) {
         input_password.sendKeys(passwords);
     }
 
     //click link Zarejestruj sie
-    public void go_to_register_page()
-    {
+    public void go_to_register_page() {
         registerLink.click();
     }
 }

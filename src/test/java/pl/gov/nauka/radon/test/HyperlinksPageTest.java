@@ -8,13 +8,11 @@ import pl.gov.nauka.radon.setup.BaseTest;
 
 public class HyperlinksPageTest extends BaseTest {
 
-    //HyperlinksPage HyperlinksPageObjects;
 
     @Test(priority = 1)
-    public void checkHyperlinks()
-    {
-        HomePage homePageObjects = new HomePage(driver);
-        HyperlinksPage hyperlinksPage = homePageObjects.clickAboutPage();
+    public void checkHyperlinks() {
+        HomePage homePage = new HomePage(driver);
+        HyperlinksPage hyperlinksPage = homePage.clickAboutPage();
 
         Assert.assertEquals(hyperlinksPage.checkFirstHyperlink(), "https://polon2.opi.org.pl/siec-polon");
         Assert.assertEquals(hyperlinksPage.checkSecondHyperlink(), "https://inventorum.opi.org.pl/");

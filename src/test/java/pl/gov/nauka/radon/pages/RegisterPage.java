@@ -55,11 +55,11 @@ public class RegisterPage {
     @FindBy(xpath = "//span[text()='Nieprawidłowy adres e-mail.']")
     WebElement errorEmail;
 
+    @FindBy(tagName = "iframe")
+    List<WebElement> iframes;
+
     @FindBy(xpath = "//button[contains(text(),'Zarejestruj')]")
     WebElement registerButton;
-
-    @FindBy(tagName="iframe")
-    List<WebElement> iframes;
 
     //Variables
     String missingName = "Proszę podać imię.";
@@ -71,25 +71,24 @@ public class RegisterPage {
     //Constructor - called as soon as the object of the class is created
     public RegisterPage(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
     }
+
     //Click on Zarejestruj sie button
-    public void clickRegisterButton()
-    {
+    public void clickRegisterButton() {
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.visibilityOf(registerButton));
         registerButton.click();
     }
+
     //verify error messages related to the missing values on the page
-    public boolean isMissingNameErrorMessageVisible()
-    {
+    public boolean isMissingNameErrorMessageVisible() {
         String getErrorMessageText = errorMissingName.getAttribute("innerHTML");
         return getErrorMessageText.equals(missingName);
     }
 
     //insert incorrect values to the specific fields
-    public void insertIncorrectValues()
-    {
+    public void insertIncorrectValues() {
         inputSurname.sendKeys(incorrectSurname);
         inputEmail.sendKeys(incorrectEmail);
         inputPassword.sendKeys(incorrectPassword);
@@ -97,16 +96,15 @@ public class RegisterPage {
     }
 
     //verify error messages related to the incorrect values
-    public void verifyErrorsIncorrectValues()
-    {
+    public void verifyErrorsIncorrectValues() {
         ExpectedConditions.visibilityOf(errorMissingUsername);
         ExpectedConditions.visibilityOf(errorRepeatedPassword);
         ExpectedConditions.visibilityOf(errorEmail);
         ExpectedConditions.visibilityOf(errorPassword);
     }
+
     //click recaptcha checkbox
-    public void clickRecaptcha()
-    {
+    public void clickRecaptcha() {
         driver.switchTo().frame(captchaFrame);
         recaptcha.click();
         ExpectedConditions.visibilityOf(iframes.get(0));
