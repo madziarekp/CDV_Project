@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 public class SignInPage {
@@ -35,7 +36,8 @@ public class SignInPage {
 
     //Method to click Zaloguj sie button
     public void clickSignInButton() {
-        ExpectedConditions.elementToBeClickable(signInButton);
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.elementToBeClickable(signInButton));
         signInButton.click();
     }
 
