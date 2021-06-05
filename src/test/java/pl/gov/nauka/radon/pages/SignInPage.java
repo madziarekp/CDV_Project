@@ -1,5 +1,6 @@
 package pl.gov.nauka.radon.pages;
 
+import com.opencsv.exceptions.CsvValidationException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -7,6 +8,10 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import pl.gov.nauka.radon.setup.CSVReaderFile;
+
+import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 public class SignInPage {
 
@@ -28,6 +33,8 @@ public class SignInPage {
     @FindBy(name = "password")
     WebElement input_password;
 
+    CSVReaderFile csvFileObjects;
+
     //Constructor - called as soon as the object of the class is created
     public SignInPage(WebDriver driver) {
         this.driver = driver;
@@ -41,27 +48,27 @@ public class SignInPage {
         signInButton.click();
     }
 
+    public SignInPage fillSignInForm() throws CsvValidationException, IOException {
+        //initialize PageObject of CSV Reader File
+        csvFileObjects = new CSVReaderFile();
+
+        //read all data from csv file
+        for (int i = 0; i < csvFileObjects.csvReadData().size(); i++) {
+            String[] t1 = csvFileObjects.csvReadData().get(i);
+            input_email.sendKeys(t1[0]);
+            input_password.sendKeys(t1[0]);
+            signInButton.click();
+            input_email.clear();
+            input_password.clear();
+
+        }
+        return new SignInPage(driver);
+
+    }
+
     //verify error message after entering incorrect login and password
     public String getErrorMessage() {
         return errorMessage.getAttribute("innerHTML");
-    }
-
-    public void removeEmailValue() {
-        input_email.clear();
-    }
-
-    public void removePasswordValue() {
-        input_password.clear();
-    }
-
-    //enter email from csv file
-    public void enterEmail(String email) {
-        input_email.sendKeys(email);
-    }
-
-    //enter password from csv file
-    public void enterPassword(String passwords) {
-        input_password.sendKeys(passwords);
     }
 
     //click link Zarejestruj sie

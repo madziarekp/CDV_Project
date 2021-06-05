@@ -14,9 +14,8 @@ import java.util.Arrays;
 
 public class SignInPageTest extends BaseTest {
 
-    //SignInPage signInPageObjects;
+
     CSVReaderFile csvFileObjects;
-    HomePage homePageObjects;
 
     String incorrectLoginData = "Nieprawidłowa nazwa użytkownika lub hasło.";
 
@@ -26,20 +25,10 @@ public class SignInPageTest extends BaseTest {
         //initialize PageObject of home page
         HomePage homePageObjects = new HomePage(driver);
         SignInPage signInPage = homePageObjects.clickSignIn();
+        SignInPage fillLoginForm = signInPage.fillSignInForm();
 
-        //initialize PageObject of CSV Reader File
-        csvFileObjects = new CSVReaderFile();
+            Assert.assertEquals(fillLoginForm.getErrorMessage(), incorrectLoginData);
 
-        //read all data from csv file
-        for (int i = 0; i < csvFileObjects.csvReadData().size(); i++) {
-            String[] t1 = csvFileObjects.csvReadData().get(i);
-            signInPage.enterEmail(t1[0]);
-            signInPage.enterPassword(t1[0]);
-            signInPage.clickSignInButton();
-            Assert.assertEquals(signInPage.getErrorMessage(), incorrectLoginData);
-            signInPage.removeEmailValue();
-            signInPage.removePasswordValue();
         }
 
     }
-}
